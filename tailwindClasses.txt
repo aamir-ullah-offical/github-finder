@@ -1,0 +1,90 @@
+1. Layout Utilities
+container: Centers the content and applies responsive width.
+flex: Enables flexbox layout on an element.
+flex-row / flex-col: Align items horizontally (row) or vertically (col).
+grid: Enables CSS grid layout.
+grid-cols-{n}: Defines the number of columns in the grid (e.g., grid-cols-3 for 3 columns).
+space-x-{n} / space-y-{n}: Adds horizontal (x) or vertical (y) space between children elements.
+2. Spacing Utilities
+m-{n}: Sets margin (m-4 for margin of 1rem).
+mt-{n} / mb-{n} / ml-{n} / mr-{n}: Sets individual margins (top, bottom, left, right).
+p-{n}: Sets padding (p-4 for padding of 1rem).
+pt-{n} / pb-{n} / pl-{n} / pr-{n}: Sets individual padding (top, bottom, left, right).
+gap-x-{n} / gap-y-{n}: Defines spacing between items in grids or flex containers (horizontal or vertical).
+3. Sizing Utilities
+w-{n}: Sets width (e.g., w-1/2 for 50% width, w-full for 100% width).
+h-{n}: Sets height (e.g., h-64 for 16rem height).
+min-w-{n} / min-h-{n}: Sets minimum width or height.
+max-w-{n} / max-h-{n}: Sets maximum width or height.
+4. Typography Utilities
+text-{size}: Sets text size (text-sm, text-lg, text-2xl, etc.).
+font-{weight}: Defines font weight (font-bold, font-light, etc.).
+text-{color}: Sets text color (e.g., text-red-500, text-blue-700).
+leading-{n}: Sets line-height (leading-tight, leading-relaxed).
+tracking-{n}: Sets letter spacing (tracking-wide, tracking-tighter).
+5. Background Utilities
+bg-{color}: Sets background color (bg-gray-200, bg-blue-500, etc.).
+bg-opacity-{n}: Adjusts background opacity (e.g., bg-opacity-50 for 50% opacity).
+bg-gradient-to-{direction}: Sets gradient direction (bg-gradient-to-r for right, bg-gradient-to-b for bottom).
+from-{color} / to-{color}: Defines gradient starting and ending colors (e.g., from-red-500 to-blue-500).
+6. Border Utilities
+border: Adds a border to an element.
+border-{color}: Sets the border color (border-gray-400).
+border-{size}: Sets the border width (border-2 for 2px width).
+rounded-{size}: Sets border-radius (e.g., rounded-lg, rounded-full for a pill shape).
+7. Flexbox & Grid Utilities
+justify-{alignment}: Aligns flex or grid items along the main axis (justify-start, justify-center, justify-between).
+items-{alignment}: Aligns items along the cross axis (items-start, items-center, items-stretch).
+self-{alignment}: Controls individual item alignment (self-start, self-center).
+flex-wrap / flex-nowrap: Controls wrapping of flex items.
+grid-cols-{n}: Specifies the number of columns in a grid (grid-cols-2 for two columns).
+8. Positioning Utilities
+relative / absolute / fixed / sticky: Sets the positioning of an element.
+inset-{n}: Controls the top, bottom, left, right positioning of an element (inset-0 for 0 spacing on all sides).
+z-{n}: Defines the z-index (z-10, z-50, etc.).
+9. Display Utilities
+block: Displays an element as a block (takes up full width).
+inline: Displays an element inline (next to other elements).
+inline-block: Combines block-level properties with inline flow.
+hidden: Hides the element (display: none).
+10. Opacity Utilities
+opacity-{n}: Sets the opacity of an element (opacity-50 for 50% transparency).
+11. Shadow Utilities
+shadow: Adds a basic shadow.
+shadow-{size}: Sets shadow size (shadow-lg, shadow-sm, etc.).
+12. Divide Utilities
+divide-x-{n}: Adds a vertical dividing line between horizontally stacked items.
+divide-y-{n}: Adds a horizontal dividing line between vertically stacked items.
+divide-{color}: Sets the color of the dividing lines (divide-gray-500).
+13. Transition & Animation
+transition: Enables CSS transitions on an element.
+duration-{n}: Sets the transition duration (duration-300 for 300ms).
+ease-{type}: Sets easing (ease-in, ease-out, etc.).
+transform: Enables transformations like scale, rotate, etc.
+14. Visibility Utilities
+visible / invisible: Toggles visibility of an element without removing it from the layout.
+hidden: Completely removes the element from the document flow.
+
+
+
+For responsiveness in Tailwind CSS, you can use breakpoints to apply styles at different screen sizes. Here's how they work:
+
+Responsive Breakpoints in Tailwind CSS
+sm (Small): min-width: 640px
+md (Medium): min-width: 768px
+lg (Large): min-width: 1024px
+xl (Extra Large): min-width: 1280px
+2xl (2X Large): min-width: 1536px
+
+How to Apply Responsive Classes
+Prefix your utility classes with the desired breakpoint to apply them at a specific screen size.
+
+Example:
+html
+Copy code
+<div class="text-sm md:text-lg lg:text-2xl">
+  Responsive Text
+</div>
+text-sm: Applied to all screen sizes (default).
+md:text-lg: Applied when the screen width is 768px or larger.
+lg:text-2xl: Applied when the screen width is 1024px or larger.

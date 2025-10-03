@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Original CSS Variables ─────────────────────────── */
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Poppins", sans-serif;
+  --nav-font: "Raleway", sans-serif;
+
+  --background-color: #ffffff;
+  --default-color: #444444;
+  --heading-color: #2c4964;
+  --accent-color: #1977cc;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+
+  --nav-color: #2c4964;
+  --nav-hover-color: #1977cc;
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #2c4964;
+  --nav-dropdown-hover-color: #1977cc;
+
+  scroll-behavior: smooth;
+}
+
