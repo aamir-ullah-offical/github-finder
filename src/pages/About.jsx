@@ -60,38 +60,37 @@ export default function About() {
   return (
     <div className="bg-white text-gray-800" id="about">
       {/* ───── Hero Section ───── */}
-     <section className="relative h-[80vh] flex items-center justify-center text-center">
-  <img
-    src="/public/about-bg.avif"
-    alt="GitHub Finder Background"
-    className="absolute inset-0 h-full w-full object-cover brightness-110 contrast-105 saturate-110"
-  />
-  {/* Lighter Gradient Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/10" />
+      <section className="relative h-[80vh] flex items-center justify-center text-center">
+        <img
+          src="/about-bg.avif"
+          alt="GitHub Finder Background"
+          className="absolute inset-0 h-full w-full object-cover brightness-110 contrast-105 saturate-110"
+        />
+        {/* Lighter Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/10" />
 
-  <motion.div
-    className="relative z-10 max-w-3xl px-6"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={fadeUp}
-  >
-    <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
-      About GitHub Finder
-    </h1>
-    <p className="text-lg md:text-xl text-gray-200 mb-6">
-      A modern tool for developers and students to search, explore, and analyze
-      GitHub users & repositories in one intuitive dashboard.
-    </p>
-    <a
-      href="/"
-      className="inline-block bg-sky-500 text-white px-8 py-4 rounded-full font-semibold shadow hover:scale-105 transition"
-    >
-      Explore GitHub Now
-    </a>
-  </motion.div>
-</section>
-
+        <motion.div
+          className="relative z-10 max-w-3xl px-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
+            About GitHub Finder
+          </h1>
+          <p className="text-lg md:text-xl text-gray-200 mb-6">
+            A modern tool for developers and students to search, explore, and
+            analyze GitHub users & repositories in one intuitive dashboard.
+          </p>
+          <a
+            href="/"
+            className="inline-block bg-sky-500 text-white px-8 py-4 rounded-full font-semibold shadow hover:scale-105 transition"
+          >
+            Explore GitHub Now
+          </a>
+        </motion.div>
+      </section>
 
       {/* ───── Vision & Mission ───── */}
       <section className="py-20 bg-white">
