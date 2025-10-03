@@ -20,11 +20,17 @@ A modern and elegant **React + Vite** application that helps you search GitHub u
 
 ## 🛠️ Tech Stack
 
-* **React (Vite)** — Fast frontend development
-* **Tailwind CSS / Custom CSS** — Clean and responsive styling
-* **Framer Motion** — Smooth animations and transitions
-* **React Icons** — Elegant icon set
-* **GitHub REST API** — Reliable data source
+* **React 18 + Vite 5** — Fast, modern frontend framework and bundler
+* **Tailwind CSS 3** — Utility-first styling for responsive UI
+* **Framer Motion 11** — Smooth animations and transitions
+* **React Router DOM 6** — Routing between pages
+* **React Router Hash Link** — Smooth scroll-to-section navigation
+* **Axios** — API calls to GitHub REST API
+* **Fuse.js** — Lightweight fuzzy search for enhanced filtering
+* **React Hot Toast** — Toast notifications
+* **React Icons / Lucide React / Heroicons / Bootstrap Icons** — Icon sets for UI
+* **Recharts** — Data visualization and charts
+* **Headless UI** — Accessible and unstyled UI components
 
 ---
 
