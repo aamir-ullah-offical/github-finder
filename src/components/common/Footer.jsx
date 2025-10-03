@@ -1,5 +1,6 @@
 // src/components/layout/Footer.jsx
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -45,14 +46,31 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <HashLink
+                smooth
+                to="/#faq"
                 className="hover:text-[#1977cc] transition"
               >
-                GitHub
-              </a>
+                FAQ
+              </HashLink>
+            </li>
+            <li>
+              <HashLink
+                smooth
+                to="/#contact"
+                className="hover:text-[#1977cc] transition"
+              >
+                Contact
+              </HashLink>
+            </li>
+            <li>
+              <HashLink
+                smooth
+                to="/#testimonials"
+                className="hover:text-[#1977cc] transition"
+              >
+                Feedback
+              </HashLink>
             </li>
           </ul>
         </div>
@@ -62,11 +80,6 @@ const Footer = () => {
           <h4 className="font-semibold text-lg mb-3">Support</h4>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/contact" className="hover:text-[#1977cc] transition">
-                Contact Us
-              </Link>
-            </li>
-            <li>
               <Link to="/privacy" className="hover:text-[#1977cc] transition">
                 Privacy Policy
               </Link>
@@ -75,6 +88,16 @@ const Footer = () => {
               <Link to="/terms" className="hover:text-[#1977cc] transition">
                 Terms of Service
               </Link>
+            </li>
+            <li>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#1977cc] transition"
+              >
+                GitHub
+              </a>
             </li>
           </ul>
         </div>

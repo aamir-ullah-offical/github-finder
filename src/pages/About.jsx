@@ -1,11 +1,14 @@
 /* ─────────────────  src/pages/About.jsx  ───────────────── */
 import { motion } from "framer-motion";
-import { 
-  FaGithub, 
-  FaSearch, 
-  FaStar, 
-  FaUsers, 
-  FaCodeBranch 
+import {
+  FaGithub,
+  FaSearch,
+  FaStar,
+  FaUsers,
+  FaCodeBranch,
+  FaBullseye,
+  FaLightbulb,
+  FaLinkedin,
 } from "react-icons/fa";
 
 const fadeUp = {
@@ -36,58 +39,113 @@ const FEATURES = [
   },
 ];
 
-const WORKFLOW = [
+const TEAM = [
   {
-    step: 1,
-    title: "Search",
-    desc: "Type any GitHub username or repository to explore.",
+    name: "Muhammad Osama",
+    role: "Project Creator (React)",
+    github: "https://github.com/xamQrexii",
+    linkedin: "https://www.linkedin.com/in/xamqrexii/",
+    avatar: "/Muhammad-Osama.png",
   },
   {
-    step: 2,
-    title: "Analyze",
-    desc: "Get profile insights, repo details, and activity history.",
-  },
-  {
-    step: 3,
-    title: "Discover",
-    desc: "Find collaborators, trending projects, or inspiring repos.",
+    name: "Aamir Ullah",
+    role: "Lead Developer (Vite + Advanced Features)",
+    github: "https://github.com/aamir-ullah-offical",
+    linkedin: "https://www.linkedin.com/in/aamirullahofficial/",
+    avatar: "/Aamir-Ullah.png",
   },
 ];
 
 export default function About() {
   return (
     <div className="bg-white text-gray-800" id="about">
-
       {/* ───── Hero Section ───── */}
-      <section className="relative h-[80vh] flex items-center justify-center text-center">
-        {/* Background with overlay */}
-        <img
-          src="/public/aboutbg.png" 
-          alt="GitHub Finder Background"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30" />
+     <section className="relative h-[80vh] flex items-center justify-center text-center">
+  <img
+    src="/public/about-bg.avif"
+    alt="GitHub Finder Background"
+    className="absolute inset-0 h-full w-full object-cover brightness-110 contrast-105 saturate-110"
+  />
+  {/* Lighter Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/10" />
 
-        <motion.div
-          className="relative z-10 max-w-3xl px-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
-            About GitHub Finder
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200">
-            A modern tool for developers and students to search, explore, and analyze GitHub users & repositories in one intuitive dashboard.
-          </p>
-        </motion.div>
+  <motion.div
+    className="relative z-10 max-w-3xl px-6"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeUp}
+  >
+    <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
+      About GitHub Finder
+    </h1>
+    <p className="text-lg md:text-xl text-gray-200 mb-6">
+      A modern tool for developers and students to search, explore, and analyze
+      GitHub users & repositories in one intuitive dashboard.
+    </p>
+    <a
+      href="/"
+      className="inline-block bg-sky-500 text-white px-8 py-4 rounded-full font-semibold shadow hover:scale-105 transition"
+    >
+      Explore GitHub Now
+    </a>
+  </motion.div>
+</section>
+
+
+      {/* ───── Vision & Mission ───── */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-5xl text-center">
+          <motion.h2
+            className="text-3xl font-bold text-sky-700 mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            Our Vision & Mission
+          </motion.h2>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10">
+            <motion.div
+              className="bg-white shadow rounded-xl p-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <FaLightbulb className="text-4xl text-sky-500 mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold mb-2">Vision</h3>
+              <p className="text-gray-600 text-sm">
+                To empower developers worldwide with a fast, intuitive tool that
+                makes GitHub exploration effortless and insightful.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="bg-white shadow rounded-xl p-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <FaBullseye className="text-4xl text-sky-500 mb-4 mx-auto" />
+              <h3 className="text-xl font-semibold mb-2">Mission</h3>
+              <p className="text-gray-600 text-sm">
+                To simplify collaboration, discovery, and growth by integrating
+                powerful search, analysis, and repository insights in one
+                platform.
+              </p>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* ───── Features Section ───── */}
-      <section className="py-20 bg-white">
+      <section className="py-20  bg-[#e4f1fc]">
         <div className="container mx-auto px-6 max-w-6xl">
-          <h2 className="text-3xl font-bold text-center text-sky-700 mb-12">Key Features</h2>
+          <h2 className="text-3xl font-bold text-center text-sky-700 mb-12">
+            Key Features
+          </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {FEATURES.map(({ icon, title, desc }) => (
               <motion.div
@@ -107,47 +165,77 @@ export default function About() {
         </div>
       </section>
 
-      {/* ───── How it Works Section ───── */}
-      <section className="py-20 bg-[#e4f1fc]">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <h2 className="text-3xl font-bold text-center text-sky-700 mb-12">How It Works</h2>
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8">
-            {WORKFLOW.map(({ step, title, desc }) => (
+      {/* ───── Team / Developers Section ───── */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-5xl text-center">
+          <h2 className="text-3xl font-bold text-sky-800 mb-14">
+            Meet the Developers
+          </h2>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+            {TEAM.map(({ name, role, github, linkedin, avatar }) => (
               <motion.div
-                key={title}
-                className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition"
-                initial="hidden"
-                whileInView="visible"
+                key={name}
+                className={`rounded-xl px-6 py-8 flex flex-col items-center bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300`}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
-                variants={fadeUp}
               >
-                <div className="mb-3 text-2xl font-bold text-sky-600">Step {step}</div>
-                <h3 className="text-xl font-semibold mb-2">{title}</h3>
-                <p className="text-gray-600 text-sm">{desc}</p>
+                {/* Avatar */}
+                <div className="relative mb-5">
+                  <img
+                    src={avatar}
+                    alt={name}
+                    className="w-20 h-20 rounded-full border border-gray-300 shadow-sm object-cover"
+                  />
+                  {name === "Muhammad Osama" && (
+                    <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-sky-700 text-white text-xs font-medium px-3 py-0.5 rounded-full shadow-sm">
+                      Creator
+                    </span>
+                  )}
+                </div>
+
+                {/* Name & Role */}
+                <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
+                <p className="text-sky-700 font-medium text-sm mb-3">{role}</p>
+
+                {/* Bio */}
+                <p className="text-gray-600 text-sm leading-relaxed mb-6 max-w-xs">
+                  {name === "Muhammad Osama"
+                    ? "Started the GitHub Finder project in React, simplifying GitHub exploration for developers."
+                    : "Enhanced the project with Vite, advanced features, and a modern UI/UX for developers."}
+                </p>
+
+                {/* Social Links */}
+                <div className="flex gap-6">
+                  <a
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-gray-900 text-xl transition-colors"
+                  >
+                    <FaGithub />
+                  </a>
+                  <a
+                    href={linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-sky-700 text-xl transition-colors"
+                  >
+                    <FaLinkedin />
+                  </a>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ───── Developer Section ───── */}
-      <section className="py-20 bg-white text-center">
-        <div className="container mx-auto px-6 max-w-2xl">
-          <h2 className="text-3xl font-bold text-sky-700 mb-4">About the Developer</h2>
-          <p className="text-gray-600 mb-6">
-            GitHub Finder is crafted with ❤️ to make exploring GitHub fast, organized, and insightful.
-          </p>
-          <a
-            href="/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-sky-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:scale-105 transition"
-          >
-            <FaGithub /> View GitHub
-          </a>
-        </div>
+      {/* ───── Closing Section ───── */}
+      <section className="py-16 bg-[#e4f1fc] text-center">
+        <p className="text-gray-600 text-lg">
+          Built with ❤️ by developers, for developers.
+        </p>
       </section>
-
     </div>
   );
 }

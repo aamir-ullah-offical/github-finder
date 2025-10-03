@@ -79,10 +79,10 @@ export default function Header() {
           </span>
 
           <span className="flex items-center gap-4">
-            <a href="#"><i className="bi bi-twitter-x" /></a>
-            <a href="#"><i className="bi bi-facebook" /></a>
-            <a href="#"><i className="bi bi-instagram" /></a>
-            <a href="#"><i className="bi bi-linkedin" /></a>
+            <a href="https://github.com/aamir-ullah-offical"><i className="bi bi-github" /></a>
+            <a href="https://www.facebook.com/AamirUllahOfficial/"><i className="bi bi-facebook" /></a>
+            <a href="https://www.instagram.com/aamir_ullah_official/"><i className="bi bi-instagram" /></a>
+            <a href="https://www.linkedin.com/in/aamirullahofficial/"><i className="bi bi-linkedin" /></a>
           </span>
         </div>
       </motion.div>
@@ -178,7 +178,7 @@ export default function Header() {
             initial="hidden"
             animate="show"
             exit="exit"
-            className="fixed right-0 top-0 z-[9998] h-full w-[85%] max-w-xs bg-[#e4f1fc] shadow-lg
+            className="fixed right-0 top-0 z-[9998] h-full w-[85%] max-w-xs bg-[#a3bed6] shadow-lg
                        backdrop-blur-xl xl:hidden"
           >
             {/* close btn */}

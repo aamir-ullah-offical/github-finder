@@ -1,9 +1,9 @@
 // src/pages/Home.jsx
 import { motion } from "framer-motion";
 import { useGithub } from "../context/github/githubContext"; 
-import FindAndFilter from "../components/profile/FindAndFilter";
+import FindAndFilter from "../components/widgets/FindAndFilter";
 import FAQ from "../components/faq/FAQ";
-import Contact from "../components/common/Contact";
+import Contact from "../components/contact/Contact";
 import AddTestimonial from "../components/Testimmonals/AddTestimonial";
 
 const parent = { show: { transition: { staggerChildren: 0.15 } } };

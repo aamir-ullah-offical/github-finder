@@ -13,7 +13,7 @@ import AlertState from "./context/alert/AlertState";
 import GithubContext from "./context/github/githubContext";
 
 // Modal
-import GitHubProfileModal from "./components/profile/GitHubProfileModal";
+import GitHubProfileModal from "./components/widgets/GitHubProfileModal";
 
 /* Lazy-loaded pages */
 const Home = lazy(() => import("./pages/Home"));
