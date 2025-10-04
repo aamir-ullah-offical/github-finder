@@ -26,7 +26,7 @@ export default function FindAndFilter() {
   const [query, setQuery] = useState("");
   const [activeUsername, setActiveUsername] = useState(null);
   const [filterOpen, setFilterOpen] = useState(false);
-  const [selected, setSelected] = useState(new Set(["username", "name"])); // default: username + display name
+  const [selected, setSelected] = useState(new Set(["username", "name"]));
   const [currentPage, setCurrentPage] = useState(1);
 
   const toggleFilter = (key) => {
@@ -76,7 +76,8 @@ export default function FindAndFilter() {
         if (userFilters.includes("company")) qualifiers.push(`company:${q}`);
 
         let userQ = encodeURIComponent(q);
-        if (inParts.length > 0) userQ = encodeURIComponent(`${q} in:${inParts.join(",")}`);
+        if (inParts.length > 0)
+          userQ = encodeURIComponent(`${q} in:${inParts.join(",")}`);
         if (qualifiers.length > 0)
           userQ += "+" + qualifiers.map((s) => encodeURIComponent(s)).join("+");
 
@@ -109,8 +110,11 @@ export default function FindAndFilter() {
         if (repoFilters.includes("language")) qualifiers.push(`language:${q}`);
 
         let repoQ = encodeURIComponent(q);
-        if (inParts.length > 0) repoQ = encodeURIComponent(`${q} in:${inParts.join(",")}`);
-        if (qualifiers.length > 0) repoQ += "+" + qualifiers.map((s) => encodeURIComponent(s)).join("+");
+        if (inParts.length > 0)
+          repoQ = encodeURIComponent(`${q} in:${inParts.join(",")}`);
+        if (qualifiers.length > 0)
+          repoQ +=
+            "+" + qualifiers.map((s) => encodeURIComponent(s)).join("+");
 
         const reposUrl = `https://api.github.com/search/repositories?q=${repoQ}&per_page=50`;
         const resR = await fetch(reposUrl);
@@ -139,10 +143,16 @@ export default function FindAndFilter() {
 
       // fallback combined search
       if (userFilters.length === 0 && repoFilters.length === 0) {
-        const usersUrl = `https://api.github.com/search/users?q=${encodeURIComponent(`${q} in:login,in:name,in:bio`)}&per_page=40`;
+        const usersUrl = `https://api.github.com/search/users?q=${encodeURIComponent(
+          `${q} in:login,in:name,in:bio`
+        )}&per_page=40`;
         const [resU, resR] = await Promise.all([
           fetch(usersUrl),
-          fetch(`https://api.github.com/search/repositories?q=${encodeURIComponent(`${q} in:name,in:description`)}&per_page=40`),
+          fetch(
+            `https://api.github.com/search/repositories?q=${encodeURIComponent(
+              `${q} in:name,in:description`
+            )}&per_page=40`
+          ),
         ]);
         const dataU = await resU.json();
         const dataR = await resR.json();
@@ -186,13 +196,17 @@ export default function FindAndFilter() {
         if (!map.has(key)) map.set(key, it);
         else {
           const prev = map.get(key);
-          prev.matchedBy = Array.from(new Set([...(prev.matchedBy || []), ...(it.matchedBy || [])]));
+          prev.matchedBy = Array.from(
+            new Set([...(prev.matchedBy || []), ...(it.matchedBy || [])])
+          );
           map.set(key, prev);
         }
       }
 
       const merged = Array.from(map.values());
-      merged.sort((a, b) => (a.type === b.type ? 0 : a.type === "user" ? -1 : 1));
+      merged.sort((a, b) =>
+        a.type === b.type ? 0 : a.type === "user" ? -1 : 1
+      );
       setResults(merged);
     } catch (err) {
       console.error("Search error:", err);
@@ -209,10 +223,16 @@ export default function FindAndFilter() {
   };
 
   const totalPages = Math.ceil(results.length / ITEMS_PER_PAGE) || 1;
-  const paginated = results.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+  const paginated = results.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   const parentVars = { show: { transition: { staggerChildren: 0.05 } } };
-  const cardVars = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.35 } } };
+  const cardVars = {
+    hidden: { opacity: 0, y: 28 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+  };
 
   return (
     <>
@@ -220,25 +240,32 @@ export default function FindAndFilter() {
         <div className="container mx-auto px-4">
           <h2
             className="mb-10 text-center text-4xl sm:text-5xl font-extrabold tracking-tight
-                       bg-gradient-to-r from-[#002244] via-sky-500 to-sky-300
-                       bg-clip-text text-transparent flex items-center justify-center gap-3"
+              bg-gradient-to-r from-[#002244] via-sky-500 to-sky-300
+              bg-clip-text text-transparent flex items-center justify-center gap-3"
             style={{ fontFamily: '"Poppins", sans-serif' }}
           >
             <FaGithub className="text-5xl" />
             GitHub Finder
           </h2>
 
+          {/* 🔍 Search bar */}
           <div className="mx-auto mb-6 max-w-4xl flex flex-col sm:flex-row gap-3 items-center justify-center relative z-50">
             <div className="relative flex-1 w-full">
               <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-accent z-50" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleSearch();
+                  }
+                }}
                 placeholder="Search GitHub users or repositories..."
                 className="w-full rounded-lg bg-white/90 py-3 pl-12 pr-12 text-sm shadow-md ring-1 ring-black/5 placeholder-gray-400 focus:ring-2 focus:ring-sky-500 focus:outline-none z-50"
               />
 
+              {/* Filter Dropdown */}
               <div className="absolute right-2 top-1/2 -translate-y-1/2 z-50">
                 <button
                   onClick={() => setFilterOpen((o) => !o)}
@@ -249,7 +276,9 @@ export default function FindAndFilter() {
 
                 {filterOpen && (
                   <div className="absolute right-0 mt-2 w-72 rounded-lg bg-white p-4 shadow-xl ring-1 ring-slate-200 z-50">
-                    <p className="mb-2 text-sm font-semibold text-slate-700">Search in:</p>
+                    <p className="mb-2 text-sm font-semibold text-slate-700">
+                      Search in:
+                    </p>
                     <ul className="space-y-2">
                       {FILTER_FIELDS.map((f) => (
                         <li key={f.key} className="flex items-center gap-2">
@@ -260,37 +289,21 @@ export default function FindAndFilter() {
                             checked={selected.has(f.key)}
                             onChange={() => toggleFilter(f.key)}
                           />
-                          <label htmlFor={`check-${f.key}`} className="text-sm text-slate-600">
+                          <label
+                            htmlFor={`check-${f.key}`}
+                            className="text-sm text-slate-600"
+                          >
                             {f.label} {f.type === "user" ? "(user)" : "(repo)"}
                           </label>
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-3 flex gap-2">
-                      <button
-                        onClick={() => setSelected(new Set(FILTER_FIELDS.map((f) => f.key)))}
-                        className="text-xs px-2 py-1 rounded bg-slate-100"
-                      >
-                        Select All
-                      </button>
-                      <button
-                        onClick={() => setSelected(new Set(["username", "name"]))}
-                        className="text-xs px-2 py-1 rounded bg-slate-100"
-                      >
-                        Users Only
-                      </button>
-                      <button
-                        onClick={() => setSelected(new Set(["repo"]))}
-                        className="text-xs px-2 py-1 rounded bg-slate-100"
-                      >
-                        Repos Only
-                      </button>
-                    </div>
                   </div>
                 )}
               </div>
             </div>
 
+            {/* Buttons */}
             <div className="flex gap-2">
               <button
                 onClick={handleSearch}
@@ -307,26 +320,33 @@ export default function FindAndFilter() {
             </div>
           </div>
 
+          {/* Selected Filters */}
           <div className="max-w-4xl mx-auto mb-6 flex flex-wrap gap-2">
             {Array.from(selected).map((k) => {
               const f = FILTER_FIELDS.find((ff) => ff.key === k);
               return (
-                <span key={k} className="text-xs px-2 py-1 rounded bg-slate-100 text-slate-700">
+                <span
+                  key={k}
+                  className="text-xs px-2 py-1 rounded bg-slate-100 text-slate-700"
+                >
                   {f?.label || k}
                 </span>
               );
             })}
           </div>
 
+          {/* Results */}
           {loading ? (
             <p className="text-center text-gray-500">Loading results...</p>
           ) : results.length === 0 ? (
-            <p className="text-center text-gray-500">No results. Try another query.</p>
+            <p className="text-center text-gray-500">
+              No results. Try another query.
+            </p>
           ) : (
             <>
               <AnimatePresence mode="popLayout">
                 <motion.div
-                  key={query + currentPage}
+                  key={currentPage}
                   variants={parentVars}
                   initial="hidden"
                   animate="show"
@@ -352,31 +372,48 @@ export default function FindAndFilter() {
                           {isRepo ? "Repo" : "User"}
                         </span>
 
-                        <div className="absolute top-2 left-2 flex flex-col gap-1">
-                          {(item.matchedBy || []).slice(0, 2).map((m, idx) => (
-                            <span
-                              key={idx}
-                              className="bg-gray-800 text-white text-[10px] font-medium px-2 py-0.5 rounded-full shadow"
-                            >
-                              {m}
-                            </span>
-                          ))}
+                        {/* Labels + Match */}
+                        <div className="absolute top-2 left-2 flex flex-col gap-1 z-20">
+                          {(item.matchedBy || [])
+                            .slice(0, 2)
+                            .map((m, idx) => (
+                              <span
+                                key={idx}
+                                className="bg-gray-800 text-white text-[10px] font-medium px-2 py-0.5 rounded-full shadow"
+                              >
+                                {m}
+                              </span>
+                            ))}
                           <span className="bg-green-600 text-white text-[10px] font-medium px-2 py-0.5 rounded-full shadow">
                             {matchPercent}% match
                           </span>
                         </div>
 
-                        <img
-                          src={item.avatar_url}
-                          alt={isRepo ? item.full_name : item.login}
-                          className="h-32 w-full object-cover"
-                        />
-                        <div className="flex flex-col gap-2 p-4">
+                        {/* ✅ Background + Foreground */}
+                        <div className="relative h-40 w-full overflow-hidden">
+                          <div
+                            className="absolute inset-0 bg-cover bg-center opacity-32 blur-sm"
+                            style={{ backgroundImage: `url(${item.avatar_url})` }}
+                          ></div>
+                          <div className="absolute inset-0 bg-white/40"></div>
+                          <div className="relative z-10 flex items-center justify-center h-full">
+                            <img
+                              src={item.avatar_url}
+                              alt={isRepo ? item.full_name : item.login}
+                              className="w-80 h-56 rounded-full border-2 border-white shadow-lg object-cover"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex flex-col gap-2 p-4 relative z-10 bg-white/80 backdrop-blur-sm">
                           <h3 className="text-sm font-semibold text-slate-900 truncate">
                             {isRepo ? item.full_name : item.login}
                           </h3>
                           {isRepo && item.description && (
-                            <p className="text-xs text-slate-600 line-clamp-2">{item.description}</p>
+                            <p className="text-xs text-slate-600 line-clamp-2">
+                              {item.description}
+                            </p>
                           )}
                           <div className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-sky-600">
                             {isRepo ? "Visit Repo" : "Explore"} <FaArrowRight />
@@ -388,6 +425,7 @@ export default function FindAndFilter() {
                 </motion.div>
               </AnimatePresence>
 
+              {/* Pagination */}
               {totalPages > 1 && (
                 <div className="mt-6 flex justify-center gap-2">
                   {Array.from({ length: totalPages }, (_, i) => (

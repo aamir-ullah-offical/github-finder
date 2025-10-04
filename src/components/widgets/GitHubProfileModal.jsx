@@ -89,7 +89,7 @@ export default function GitHubProfileModal({ open, onClose, username, matchScore
                 </button>
 
                 {/* Header */}
-                <div className="relative h-64 w-full bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900">
+                <div className="relative h-96 w-full bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900">
                   <img
                     src={avatar_url}
                     alt={login}
